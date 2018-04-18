@@ -29,3 +29,5 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 ## 注意
 
 * 组件名使用 pascal 命名法（开头大写）
+* 除了两个 `Container` 暂时不要动以外，其他的组件请完成（可按需要自行添加或删除）
+* 具体组件任务分配，请参照 Teambition 公示。
