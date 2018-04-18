@@ -12,7 +12,7 @@ export default {
 
 <style>
 #app {
-  font-family: 'Microsoft Yahei', 'Heiti', Helvetica, Arial, sans-serif;
+  font-family: "Microsoft Yahei", "Heiti", "Helvetica Neue", Helvetica, "PingFang SC", Arial, sans-serif;
   font-size: 14px;
 }
 </style>
