@@ -5,6 +5,8 @@ import PersonalContainer from '@/components/PersonalContainer';
 import PersonalHome from '@/components/PersonalHome/PersonalHome';
 import PersonalSearch from '@/components/PersonalSearch/PersonalSearch';
 import PersonalPatents from '@/components/PersonalPatents/PersonalPatents';
+// import PersonalPatents from '@/components/PersonalPatents/Untitled-1';
+
 import PersonalProjects from '@/components/PersonalProjects/PersonalProjects';
 import PersonalCenter from '@/components/PersonalCenter/PersonalCenter';
 
@@ -13,6 +15,8 @@ import CompanyProjects from '@/components/CompanyProjects/CompanyProjects';
 import CompanyPatents from '@/components/CompanyPatents/CompanyPatents';
 import CompanyTalent from '@/components/CompanyTalent/CompanyTalent';
 import CompanyCenter from '@/components/CompanyCenter/CompanyCenter';
+import Login from '@/components/Login/Login';
+import ForgetPassword from '@/components/Login/ForgetPassword';
 
 Vue.use(Router);
 
@@ -23,13 +27,22 @@ export default new Router({
     path: '/',
     redirect: '/personal',
 
-  }, {
+  },{
 
     // personal
     path: '/personal',
     name: 'PersonalContainer',
     component: PersonalContainer,
     children: [{
+      // login
+      path: '/login',
+      name: 'Login',
+      component: Login
+    },{
+      path: '/forgetpassword',
+      name: 'ForgetPassword',
+      component: ForgetPassword
+    },{
       path: '/home',
       name: 'PersonalHome',
       component: PersonalHome
