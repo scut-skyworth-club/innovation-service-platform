@@ -1,8 +1,8 @@
 <template>
   <div id="login">
     <Tabs 
-       value="person" 
-       :animated="false" @on-click="changeCurrent" :class="current">
+        value="person" 
+        :animated="false" @on-click="changeCurrent" :class="current">
         <TabPane 
         :label="item.label" 
         :name="item.name"
@@ -139,7 +139,7 @@ export default {
     }
 }
 </script>
-<style>
+<style lang="scss">
     .person .ivu-tabs-nav{
         width: 100%;
         background-color: #2d8cf0;
