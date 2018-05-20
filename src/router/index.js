@@ -14,6 +14,7 @@ import CompanyContainer from '@/components/CompanyContainer';
 import CompanyProjects from '@/components/CompanyProjects/CompanyProjects';
 import CompanyProjectsPublish from '@/components/CompanyProjects/CompanyProjectsPublish/CompanyProjectsPublish';
 import CompanyProjectsCheckout from '@/components/CompanyProjects/CompanyProjectsCheckout/CompanyProjectsCheckout';
+import CompanyProjectsStage from '@/components/CompanyProjects/CompanyProjectsStage/CompanyProjectsStage';
 import CompanyPatents from '@/components/CompanyPatents/CompanyPatents';
 import CompanyTalent from '@/components/CompanyTalent/CompanyTalent';
 import CompanyCenter from '@/components/CompanyCenter/CompanyCenter';
@@ -73,8 +74,8 @@ export default new Router({
     name: 'CompanyContainer',
     component: CompanyContainer,
     children: [{
-      path: 'projects',
-      name: 'CompanyProjects',
+      path: 'project',
+      name: 'CompanyProject',
       component: CompanyProjects,
       // children: [{
       //   path: 'publish',
@@ -88,15 +89,21 @@ export default new Router({
       //   },
       // ],
     }, {
-      path: 'projects/publish',
+      path: 'project/publish',
       name: 'CompanyProjectsPublish',
       component: CompanyProjectsPublish
       },
       {
-        path: 'projects/checkout',
+        path: 'project/checkout',
         name: 'CompanyProjectsCheckout',
         component: CompanyProjectsCheckout
-      },{
+      },
+      {
+        path: 'project/stage',
+        name: 'CompanyProjectsStage',
+        component: CompanyProjectsStage
+      },
+      {
       path: 'talent',
       name: 'CompanyTalent',
       component: CompanyTalent,

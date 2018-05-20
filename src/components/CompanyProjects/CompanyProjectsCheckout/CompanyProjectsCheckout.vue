@@ -1,44 +1,61 @@
 <template>
 <div id="company-project-checkout">
   <Breadcrumb class="breadcrumb">
-    <BreadcrumbItem to="/company/projects">项目</BreadcrumbItem>
+    <BreadcrumbItem to="/company/project">项目</BreadcrumbItem>
     <BreadcrumbItem>我的项目</BreadcrumbItem>
   </Breadcrumb>
   <div id="company-has-project" v-if="items.length>0">
     <div class="company-project-items">
       <div class="company-project-item" v-for="(item,index) in items" :key="index" v-show="(index<page*4)&&(index>=page*4-4)">
-
+        <router-link v-if="item.proState===0" to="/company/project/publish">
+          <Card class="card">
+            <div class="circle">
+              <i-circle :percent="20" stroke-color="#ed3f14">
+                <Icon type="ios-information-empty" size="100" class="icon-unpublished"></Icon>
+              </i-circle>
+            </div>
+            <p class="icon-unpublished description">项目尚未发布</p>
+            <p class="icon-unpublished">点击进行编辑</p>
+          </Card>
+        </router-link>
+        <router-link v-else-if="item.proState===1" to="/">
+          <Card class="card">
+            <div class="circle">
+              <i-circle :percent="40" stroke-color="#ff9900">
+                <Icon type="ios-help-empty" size="100" class="icon-published"></Icon>
+              </i-circle>
+            </div>
+            <p class="icon-published description">项目已发布</p>
+            <p class="icon-published">共有24人投递简历</p>
+          </Card>
+        </router-link>
+        <router-link v-else-if="item.proState===2" :to="{path:'/company/project/stage',query:{proName:item.proName}}">
+          <Card class="card">
+            <div class="circle">
+              <i-circle :percent="80" stroke-color="#2d8cf0">
+                <Icon type="ios-arrow-thin-up" size="80" class="icon-ongoing"></Icon>
+              </i-circle> 
+            </div>
+            <p class="icon-ongoing">进行中</p>
+          </Card>
+        </router-link>
+        <router-link  v-else-if="item.proState===3" :to="{path:'/company/project/stage',query:{proName:item.proName}}">
+          <Card class="card">
+            <div class="circle">
+              <i-circle :percent="100" stroke-color="#19be6b">
+                <Icon type="ios-checkmark-empty" size="100" class="icon-completed"></Icon>
+              </i-circle>
+            </div>
+            <p class="icon-completed">项目已完成</p>
+          </Card>
+        </router-link>
       </div>
-      <router-link v-if="item.proState===0" :to="{path:'/'}" class="company-project-item-container">
-        <Card style="width:320px">
-          <div style="text-align:center">
-            <i-circle :percent="0" stroke-color="#5cb85c">
-              <Icon type="ios-help-empty" size="100" ></Icon>
-            </i-circle>
-            <h3>项目尚未发布</h3>
-            <h3>点击进行编辑</h3>
-          </div>
-        </Card>
-      </router-link>
-      <router-link v-else-if="item.proState===1" :to="{path:'/'}" class="company-project-item-container">
-        <img class="company-project-item-image" src="../../../assets/images/已发布.png">
-        <p class="company-project-item-message-2">项目已发布</p>
-        <p class="company-project-item-message-2">共有<span class="company-project-item-people">24</span>人投递简历</p>
-      </router-link>
-      <router-link v-else-if="item.proState===2" :to="{path:'/project/stage',query:{proName:item.proName}}" class="company-project-item-container">
-        <img class="company-project-item-image" src="../../../assets/images/进行中.png">
-        <p class="company-project-item-message-3">项目进行中</p>
-      </router-link>
-      <router-link  v-else-if="item.proState===3" :to="{path:'/project/stage',query:{proName:item.proName}}"  class="company-project-item-container">
-        <img class="company-project-item-image" src="../../../assets/images/已完成.png">
-        <p class="company-project-item-message-4">项目已完成</p>
-      </router-link>
     </div>
-
-    <Page :current="2" :total="60" simple></Page>
+    <Page class="page" :current="page" :total="total" :page-size="4" @on-change="pageChange"></Page>
   </div>
   <div v-else id="company-no-project">
-
+    <p class="company-no-project-p">您还没有任何项目</p>
+    <router-link to="/company/projects/publish" >现在创建一个？</router-link>
   </div>
 </div>
 
@@ -73,10 +90,64 @@ export default {
         {"proId":9,"proState": 3}
       ]
     }
+  },
+  computed:{
+    total: function() {
+      return this.items.length
+    }
+  },
+  methods:{
+    pageChange:function(currentPage){
+      this.page = currentPage
+    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-
+.breadcrumb{
+  margin:40px 0 0 50px;
+}
+.company-project-items{
+  margin: 20px 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  .card{
+    width: 20vw;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    text-align:center;
+    .circle{
+      margin: 20vh 0 20px 0;
+    }
+    .description{
+      margin-bottom: 2px;
+    }
+    .icon-unpublished{
+      color: #ed3f14;
+    }
+    .icon-published{
+      color: #ff9900;
+    }
+    .icon-ongoing{
+      color: #2d8cf0;
+    }
+    .icon-completed{
+      color: #19be6b;
+    }
+  }
+}
+.page{
+  display: flex;
+  justify-content: center;
+}
+#company-no-project{
+  text-align: center;
+  margin-top: 30vh;
+  font-size: 24px;
+  .company-no-project-p{
+    margin-bottom: 12px;
+  }
+}
 </style>

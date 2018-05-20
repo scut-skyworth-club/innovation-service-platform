@@ -8,7 +8,7 @@
 
     <div class="CompanyNav-menu">
       <MenuItem name="projects">
-        <router-link to="/company/projects" class="menu-item">
+        <router-link to="/company/project" class="menu-item">
           <Icon type="merge"></Icon>
           项目
         </router-link>

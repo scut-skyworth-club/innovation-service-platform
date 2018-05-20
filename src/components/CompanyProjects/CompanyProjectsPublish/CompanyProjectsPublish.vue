@@ -1,7 +1,7 @@
 <template>
   <div id="company-project-publish">
     <Breadcrumb class="breadcrumb">
-        <BreadcrumbItem to="/company/projects">项目</BreadcrumbItem>
+        <BreadcrumbItem to="/company/project">项目</BreadcrumbItem>
         <BreadcrumbItem>发布项目</BreadcrumbItem>
     </Breadcrumb>
     <p class="title">发布您的项目</p>
@@ -46,7 +46,10 @@
         </Upload>
       </FormItem>
     </Form>
-    <Button type="primary" class="button">确定发布</Button>
+    <div class="button">
+      <Button type="primary" class="button-1">确定发布</Button>
+      <Button type="ghost">暂时保存</Button> 
+    </div>
   </div>
 </template>
 
@@ -96,7 +99,10 @@ export default {
   margin: 20px 50px 0 50px;
 }
 .button{
-  display: block;
-  margin:0 auto;
+  display: flex;
+  justify-content: center;
+  .button-1{
+    margin-right: 40px;
+  }
 }
 </style>

@@ -5,10 +5,10 @@
     </i>
     <p class="company-title">创新项目网络服务平台</p>
     <div class="company-button">
-      <router-link to="/company/projects/publish">
+      <router-link to="/company/project/publish">
         <Button type="primary" class="button-item">发布项目</Button>
       </router-link>
-      <router-link to="/company/projects/checkout" >
+      <router-link to="/company/project/checkout" >
         <Button type="primary" class="button-item">我的项目</Button>
       </router-link>
     </div>
