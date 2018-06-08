@@ -12,6 +12,9 @@ import PersonalCenter from '@/components/PersonalCenter/PersonalCenter';
 
 import CompanyContainer from '@/components/CompanyContainer';
 import CompanyProjects from '@/components/CompanyProjects/CompanyProjects';
+import CompanyProjectsPublish from '@/components/CompanyProjects/CompanyProjectsPublish/CompanyProjectsPublish';
+import CompanyProjectsCheckout from '@/components/CompanyProjects/CompanyProjectsCheckout/CompanyProjectsCheckout';
+import CompanyProjectsStage from '@/components/CompanyProjects/CompanyProjectsStage/CompanyProjectsStage';
 import CompanyPatents from '@/components/CompanyPatents/CompanyPatents';
 import CompanyTalent from '@/components/CompanyTalent/CompanyTalent';
 import CompanyCenter from '@/components/CompanyCenter/CompanyCenter';
@@ -35,31 +38,31 @@ export default new Router({
     component: PersonalContainer,
     children: [{
       // login
-      path: '/login',
+      path: 'login',
       name: 'Login',
       component: Login
     },{
-      path: '/forgetpassword',
+      path: 'forgetpassword',
       name: 'ForgetPassword',
       component: ForgetPassword
     },{
-      path: '/home',
+      path: 'home',
       name: 'PersonalHome',
       component: PersonalHome
     }, {
-      path: '/search',
+      path: 'search',
       name: 'PersonalSearch',
       component: PersonalSearch,
     }, {
-      path: '/management',
+      path: 'management',
       name: 'PersonalProjects',
       component: PersonalProjects,
     }, {
-      path: '/patents',
+      path: 'patents',
       name: 'PersonalPatents',
       component: PersonalPatents,
     }, {
-      path: '/center',
+      path: 'center',
       name: 'PersonalCenter',
       component: PersonalCenter,
     }],
@@ -71,19 +74,45 @@ export default new Router({
     name: 'CompanyContainer',
     component: CompanyContainer,
     children: [{
-      path: '/projects',
-      name: 'CompanyProjects',
+      path: 'project',
+      name: 'CompanyProject',
       component: CompanyProjects,
+      // children: [{
+      //   path: 'publish',
+      //   name: 'CompanyProjectsPublish',
+      //   component: CompanyProjectsPublish
+      //   },
+      //   {
+      //     path: 'checkout',
+      //     name: 'CompanyProjectsCheckout',
+      //     component: CompanyProjectsCheckout
+      //   },
+      // ],
     }, {
-      path: '/talent',
+      path: 'project/publish',
+      name: 'CompanyProjectsPublish',
+      component: CompanyProjectsPublish
+      },
+      {
+        path: 'project/checkout',
+        name: 'CompanyProjectsCheckout',
+        component: CompanyProjectsCheckout
+      },
+      {
+        path: 'project/stage',
+        name: 'CompanyProjectsStage',
+        component: CompanyProjectsStage
+      },
+      {
+      path: 'talent',
       name: 'CompanyTalent',
       component: CompanyTalent,
     }, {
-      path: '/patents',
+      path: 'patents',
       name: 'CompanyPatents',
       component: CompanyPatents,
     }, {
-      path: '/center',
+      path: 'center',
       name: 'CompanyCenter',
       component: CompanyCenter,
     }],
